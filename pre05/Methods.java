@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.*;
 
+// Exercises 2, 3, and 8 in Chapter 6 of Think Java
 public class Methods {
   // Main method to test custom methods
   public static void main(String[] args){
@@ -15,6 +16,7 @@ public class Methods {
     System.out.println(ack(x,y));
   }
 
+  // Exercise 2
   public static boolean isDivisible(int n, int m){
     if ((n % m) == 0){
       return true;
@@ -23,6 +25,7 @@ public class Methods {
     }
   }
 
+  // Exercise 3
   public static boolean isTriangle(int a, int b, int c){
     if ((c > a + b) || (b > a + c) || (a > b + c)){
       return false;
@@ -31,6 +34,7 @@ public class Methods {
     }
   }
 
+  // Exercise 8
   public static int ack(int m, int n){
     if (m == 0){
       return n+1;
