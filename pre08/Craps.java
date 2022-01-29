@@ -2,23 +2,28 @@ import java.io.*;
 import java.util.*;
 
 public class Craps {
-  //Just testing right now, TODO
+
   public static void main(String[] args){
     Scanner in = new Scanner(System.in);
-    int n,m, result;
+    int numRounds;
+    int winCount = 0;
 
-    //System.out.println("Enter a dice size:");
-    //n = in.nextInt();
-    //System.out.println("Enter a number of dice to roll:");
-    //m = in.nextInt();
+    System.out.println("How many rounds of Craps do you want to play?");
+    numRounds = in.nextInt();
 
-    boolean win = round();
-    if(win){
-      System.out.println("You win!");
-    } else {
-      System.out.println("You lose!");
+    for (int i = 0; i < numRounds; i++) {
+      boolean win = round();
+        if(win){
+          System.out.println("You win!\n");
+          winCount++;
+        } else {
+          System.out.println("You lose!\n");
+        }
     }
-  }
+
+    System.out.printf("You won %d out of %d rounds!", winCount,numRounds);
+    System.out.println();
+  }  
 
   public static int roll(int diceSize){
     Random random = new Random();
@@ -33,10 +38,10 @@ public class Craps {
     }
     return sum;
   }
-  //TODO
+
   public static boolean round(){ 
     int diceRoll = shoot(2,6);
-    System.out.printf("First: Rolled a %d", diceRoll);
+    System.out.printf("The first roll of the round is %d", diceRoll);
     System.out.println();
     int point = 0;
     if (diceRoll == 2 || diceRoll == 3 || diceRoll == 12){
@@ -46,12 +51,15 @@ public class Craps {
     } else {
       point = diceRoll;
     }
-    System.out.printf("Point is: %d",point);
+    System.out.printf("The Point is set to %d",point);
     System.out.println();
+
+    int pointCount = 1;
     do {
       diceRoll = shoot(2,6);
-      System.out.printf("First: Rolled a %d", diceRoll);
+      System.out.printf("Shoot for Point %d is a %d", pointCount,diceRoll);
       System.out.println();
+      pointCount++;
     } while (diceRoll != 7 && diceRoll != point);
 
     if (diceRoll == 7){
